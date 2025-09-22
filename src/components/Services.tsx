@@ -1,76 +1,69 @@
-import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { MagnifierIcon, WalletIcon, ChartIcon } from "./Icons";
-import cubeLeg from "../assets/cube-leg.png";
 
-interface ServiceProps {
-  title: string;
-  description: string;
-  icon: JSX.Element;
-}
-
-const serviceList: ServiceProps[] = [
+const services = [
   {
-    title: "Code Collaboration",
+    title: "Corte & Peinado",
+    img: "/images/corte.png",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    icon: <ChartIcon />,
+      "Desde cortes clásicos hasta estilos modernos, cuidamos cada detalle para resaltar tu personalidad.",
   },
   {
-    title: "Project Management",
+    title: "Color & Mechas",
+    img: "/images/color.png",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    icon: <WalletIcon />,
+      "Colores vibrantes, mechas luminosas y técnicas profesionales para transformar tu look.",
   },
   {
-    title: "Task Automation",
+    title: "Manicure & Pedicure",
+    img: "/images/uñas.png",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    icon: <MagnifierIcon />,
+      "Un cuidado completo para tus manos y pies con acabados duraderos y elegantes.",
+  },
+  {
+    title: "Maquillaje & Novias",
+    img: "/images/maquillaje.png",
+    description:
+      "Realzamos tu belleza natural con maquillaje profesional para toda ocasión, incluyendo novias.",
+  },
+  {
+    title: "Tratamientos Capilares",
+    img: "/images/tratamientos.png",
+    description:
+      "Hidratación profunda, nutrición y reparación para mantener tu cabello sano y radiante.",
   },
 ];
 
-export const Services = () => {
+export function Services() {
   return (
-    <section className="container py-24 sm:py-32">
-      <div className="grid lg:grid-cols-[1fr,1fr] gap-8 place-items-center">
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-              Client-Centric{" "}
-            </span>
-            Services
-          </h2>
+    <section id="servicios" className="section bg-brand-dark text-white">
+      <div className="container text-center">
+        {/* Título */}
+        <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-brand-secondary">
+          Nuestros Servicios
+        </h2>
 
-          <p className="text-muted-foreground text-xl mt-4 mb-8 ">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-            dolor.
-          </p>
-
-          <div className="flex flex-col gap-8">
-            {serviceList.map(({ icon, title, description }: ServiceProps) => (
-              <Card key={title}>
-                <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
-                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
-                    {icon}
-                  </div>
-                  <div>
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription className="text-md mt-2">
-                      {description}
-                    </CardDescription>
-                  </div>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
+        {/* Grid de servicios */}
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-brand-light/10 rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition border border-brand-primary/20"
+            >
+              <img
+                src={service.img}
+                alt={service.title}
+                className="w-28 h-28 object-cover mb-4 rounded-full border-2 border-brand-secondary"
+              />
+              <h3 className="text-xl font-semibold text-brand-secondary mb-2">
+                {service.title}
+              </h3>
+              <p className="text-sm text-brand-light/90">
+                {service.description}
+              </p>
+            </div>
+          ))}
         </div>
-
-        <img
-          src={cubeLeg}
-          className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
-          alt="About services"
-        />
       </div>
     </section>
   );
-};
+}
+

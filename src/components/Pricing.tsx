@@ -1,147 +1,117 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Check } from "lucide-react";
 
-enum PopularPlanType {
-  NO = 0,
-  YES = 1,
-}
 
-interface PricingProps {
-  title: string;
-  popular: PopularPlanType;
-  price: number;
-  description: string;
-  buttonText: string;
-  benefitList: string[];
-}
-
-const pricingList: PricingProps[] = [
+const pricingPlans = [
   {
-    title: "Free",
-    popular: 0,
-    price: 0,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Get Started",
-    benefitList: [
-      "1 Team member",
-      "2 GB Storage",
-      "Upto 4 pages",
-      "Community support",
-      "lorem ipsum dolor",
-    ],
+    title: "Básico",
+    price: "$78.000 COP",
+    description: "Ideal para un look rápido y sencillo.",
+    features: ["Corte de cabello", "Peinado básico", "Lavado"],
   },
   {
     title: "Premium",
-    popular: 1,
-    price: 5,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Start Free Trial",
-    benefitList: [
-      "4 Team member",
-      "4 GB Storage",
-      "Upto 6 pages",
-      "Priority support",
-      "lorem ipsum dolor",
+    price: "$156.000 COP",
+    description: "El plan más popular para un estilo completo.",
+    features: [
+      "Corte y peinado",
+      "Coloración o mechas",
+      "Tratamiento capilar",
+      "Lavado y secado",
     ],
   },
   {
-    title: "Enterprise",
-    popular: 0,
-    price: 40,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Contact US",
-    benefitList: [
-      "10 Team member",
-      "8 GB Storage",
-      "Upto 10 pages",
-      "Priority support",
-      "lorem ipsum dolor",
+    title: "Novias",
+    price: "$364.000 COP",
+    description: "Perfecto para el gran día, incluye prueba previa.",
+    features: [
+      "Maquillaje profesional",
+      "Peinado especial",
+      "Manicure y pedicure",
+      "Prueba de maquillaje y peinado",
     ],
   },
 ];
 
-export const Pricing = () => {
+const individualServices = [
+  {
+    title: "Tintura completa",
+    price: "$117.000 COP",
+    description: "Color uniforme de raíz a puntas con productos de alta calidad.",
+  },
+  {
+    title: "Manicure & Pedicure",
+    price: "$65.000 COP",
+    description: "Cuidado completo de manos y pies con esmaltado tradicional.",
+  },
+  {
+    title: "Tratamiento Capilar",
+    price: "$91.000 COP",
+    description: "Hidratación profunda y reparación para mantener tu cabello sano.",
+  },
+];
+
+export function Pricing() {
   return (
-    <section
-      id="pricing"
-      className="container py-24 sm:py-32"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Get
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          {" "}
-          Unlimited{" "}
-        </span>
-        Access
-      </h2>
-      <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-        reiciendis.
-      </h3>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pricingList.map((pricing: PricingProps) => (
-          <Card
-            key={pricing.title}
-            className={
-              pricing.popular === PopularPlanType.YES
-                ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10"
-                : ""
-            }
-          >
-            <CardHeader>
-              <CardTitle className="flex item-center justify-between">
-                {pricing.title}
-                {pricing.popular === PopularPlanType.YES ? (
-                  <Badge
-                    variant="secondary"
-                    className="text-sm text-primary"
-                  >
-                    Most popular
-                  </Badge>
-                ) : null}
-              </CardTitle>
-              <div>
-                <span className="text-3xl font-bold">${pricing.price}</span>
-                <span className="text-muted-foreground"> /month</span>
-              </div>
-
-              <CardDescription>{pricing.description}</CardDescription>
-            </CardHeader>
-
-            <CardContent>
-              <Button className="w-full">{pricing.buttonText}</Button>
-            </CardContent>
-
-            <hr className="w-4/5 m-auto mb-4" />
-
-            <CardFooter className="flex">
-              <div className="space-y-4">
-                {pricing.benefitList.map((benefit: string) => (
-                  <span
-                    key={benefit}
-                    className="flex"
-                  >
-                    <Check className="text-green-500" />{" "}
-                    <h3 className="ml-2">{benefit}</h3>
-                  </span>
+    <section id="precios" className="section bg-brand-dark text-white">
+      <div className="container text-center">
+        {/* Paquetes */}
+        <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-brand-secondary">
+          Nuestros Paquetes
+        </h2>
+        <div className="grid gap-8 md:grid-cols-3 mb-16">
+          {pricingPlans.map((plan, index) => (
+            <div
+              key={index}
+              className="bg-brand-light/10 p-6 rounded-xl shadow-lg border border-brand-primary/20 hover:scale-105 transition flex flex-col"
+            >
+              <h3 className="text-xl font-semibold text-brand-secondary mb-2">
+                {plan.title}
+              </h3>
+              <p className="text-2xl font-bold text-brand-secondary mb-4">
+                {plan.price}
+              </p>
+              <p className="text-sm text-brand-light/90 mb-6">
+                {plan.description}
+              </p>
+              <ul className="text-left text-sm flex-1 mb-6 space-y-2">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="text-brand-light/90">
+                    • {feature}
+                  </li>
                 ))}
-              </div>
-            </CardFooter>
-          </Card>
-        ))}
+              </ul>
+              <button className="w-full py-2 px-4 rounded-lg bg-brand-secondary text-brand-dark font-semibold hover:bg-brand-primary transition">
+                Reservar
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Servicios individuales */}
+        <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-brand-secondary">
+          Servicios Individuales
+        </h2>
+        <div className="grid gap-8 md:grid-cols-3">
+          {individualServices.map((service, index) => (
+            <div
+              key={index}
+              className="bg-brand-light/10 p-6 rounded-xl shadow-lg border border-brand-primary/20 hover:scale-105 transition flex flex-col"
+            >
+              <h3 className="text-xl font-semibold text-brand-secondary mb-2">
+                {service.title}
+              </h3>
+              <p className="text-2xl font-bold text-brand-secondary mb-4">
+                {service.price}
+              </p>
+              <p className="text-sm text-brand-light/90 mb-6">
+                {service.description}
+              </p>
+              <button className="w-full py-2 px-4 rounded-lg bg-brand-secondary text-brand-dark font-semibold hover:bg-brand-primary transition">
+                Reservar
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
+}

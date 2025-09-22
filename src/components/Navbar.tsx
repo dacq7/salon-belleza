@@ -12,80 +12,64 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
+import { buttonVariants } from "./ui/button";
 
 interface RouteProps {
   href: string;
   label: string;
 }
 
+// 👉 Ahora incluye la sección Precios
 const routeList: RouteProps[] = [
-  {
-    href: "#features",
-    label: "Features",
-  },
-  {
-    href: "#testimonials",
-    label: "Testimonials",
-  },
-  {
-    href: "#pricing",
-    label: "Pricing",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#equipo", label: "Equipo" },
+  { href: "#testimonios", label: "Testimonios" },
+  { href: "#precios", label: "Precios" },
+  { href: "#contacto", label: "Contacto" },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
+    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-brand-dark/80 backdrop-blur-md">
       <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
-          <NavigationMenuItem className="font-bold flex">
-            <a
-              rel="noreferrer noopener"
-              href="/"
-              className="ml-2 font-bold text-xl flex"
-            >
-              <LogoIcon />
-              ShadcnUI/React
+        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between items-center">
+          {/* Logo + Nombre */}
+          <NavigationMenuItem className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
+              <img
+                src="/images/logo.png"
+                alt="Logo Salón Glamour"
+                className="h-10 w-auto"
+              />
+              <span className="font-display text-xl text-brand-secondary">
+                Glamour
+              </span>
             </a>
           </NavigationMenuItem>
 
           {/* mobile */}
-          <span className="flex md:hidden">
+          <span className="flex md:hidden items-center gap-2">
             <ModeToggle />
-
-            <Sheet
-              open={isOpen}
-              onOpenChange={setIsOpen}
-            >
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
                 <Menu
-                  className="flex md:hidden h-5 w-5"
+                  className="h-6 w-6 text-white"
                   onClick={() => setIsOpen(true)}
-                >
-                  <span className="sr-only">Menu Icon</span>
-                </Menu>
+                />
               </SheetTrigger>
-
-              <SheetContent side={"left"}>
+              <SheetContent side="left" className="bg-brand-dark text-white">
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                  <SheetTitle className="font-bold text-xl text-brand-secondary">
+                    Glamour
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col justify-center items-center gap-2 mt-4">
-                  {routeList.map(({ href, label }: RouteProps) => (
+                <nav className="flex flex-col justify-center items-start gap-4 mt-6">
+                  {routeList.map(({ href, label }) => (
                     <a
-                      rel="noreferrer noopener"
                       key={label}
                       href={href}
                       onClick={() => setIsOpen(false)}
@@ -94,53 +78,34 @@ export const Navbar = () => {
                       {label}
                     </a>
                   ))}
-                  <a
-                    rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-                    target="_blank"
-                    className={`w-[110px] border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
-                  >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
-                  </a>
                 </nav>
               </SheetContent>
             </Sheet>
           </span>
 
           {/* desktop */}
-          <nav className="hidden md:flex gap-2">
-            {routeList.map((route: RouteProps, i) => (
+          <nav className="hidden md:flex gap-6 items-center">
+            {routeList.map(({ href, label }) => (
               <a
-                rel="noreferrer noopener"
-                href={route.href}
-                key={i}
-                className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
-                })}`}
+                key={label}
+                href={href}
+                className={`text-sm font-semibold hover:text-brand-secondary transition`}
               >
-                {route.label}
+                {label}
               </a>
             ))}
-          </nav>
-
-          <div className="hidden md:flex gap-2">
             <a
-              rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-              target="_blank"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
+              href="#contacto"
+              className="btn-primary text-sm"
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              Reserva tu cita
             </a>
-
             <ModeToggle />
-          </div>
+          </nav>
         </NavigationMenuList>
       </NavigationMenu>
     </header>
   );
 };
+
+

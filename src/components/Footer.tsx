@@ -8,7 +8,7 @@ export const Footer = () => {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <img
-              src="/images/logo.png"
+              src={`${import.meta.env.BASE_URL}images/logo.png`}
               alt="Logo Glamour"
               className="h-10 w-auto"
             />

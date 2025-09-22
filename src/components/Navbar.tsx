@@ -41,7 +41,7 @@ export const Navbar = () => {
           <NavigationMenuItem className="flex items-center gap-2">
             <a href="/" className="flex items-center gap-2">
               <img
-                src="/images/logo.png"
+                src={`${import.meta.env.BASE_URL}images/logo.png`}
                 alt="Logo Salón Glamour"
                 className="h-10 w-auto"
               />

@@ -3,22 +3,22 @@ const team = [
   {
     name: "Laura Gómez",
     role: "Cortes & Peinados",
-    img: "/images/stylist1.png",
+    img: `${import.meta.env.BASE_URL}images/stylist1.png`,
   },
   {
     name: "Ana Torres",
     role: "Coloración & Mechas",
-    img: "/images/stylist2.png",
+    img: `${import.meta.env.BASE_URL}images/stylist2.png`,
   },
   {
     name: "Carolina Pérez",
     role: "Manicure & Pedicure",
-    img: "/images/stylist3.png",
+    img: `${import.meta.env.BASE_URL}images/stylist3.png`,
   },
   {
     name: "Sofía Martínez",
     role: "Maquillaje Profesional",
-    img: "/images/stylist4.png",
+    img: `${import.meta.env.BASE_URL}images/stylist4.png`,
   },
 ];
 
@@ -54,3 +54,4 @@ export function Team() {
     </section>
   );
 }
+

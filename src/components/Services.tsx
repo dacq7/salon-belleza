@@ -2,31 +2,31 @@
 const services = [
   {
     title: "Corte & Peinado",
-    img: "/images/corte.png",
+    img: `${import.meta.env.BASE_URL}images/corte.png`,
     description:
       "Desde cortes clásicos hasta estilos modernos, cuidamos cada detalle para resaltar tu personalidad.",
   },
   {
     title: "Color & Mechas",
-    img: "/images/color.png",
+    img: `${import.meta.env.BASE_URL}images/color.png`,
     description:
       "Colores vibrantes, mechas luminosas y técnicas profesionales para transformar tu look.",
   },
   {
     title: "Manicure & Pedicure",
-    img: "/images/uñas.png",
+    img: `${import.meta.env.BASE_URL}images/uñas.png`,
     description:
       "Un cuidado completo para tus manos y pies con acabados duraderos y elegantes.",
   },
   {
     title: "Maquillaje & Novias",
-    img: "/images/maquillaje.png",
+    img: `${import.meta.env.BASE_URL}images/maquillaje.png`,
     description:
       "Realzamos tu belleza natural con maquillaje profesional para toda ocasión, incluyendo novias.",
   },
   {
     title: "Tratamientos Capilares",
-    img: "/images/tratamientos.png",
+    img: `${import.meta.env.BASE_URL}images/tratamientos.png`,
     description:
       "Hidratación profunda, nutrición y reparación para mantener tu cabello sano y radiante.",
   },

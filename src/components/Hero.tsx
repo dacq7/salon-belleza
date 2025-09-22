@@ -20,7 +20,7 @@ export const Hero = () => {
 
       {/* Imagen de fondo */}
       <img
-        src={`${import.meta.env.BASE_URL}images/hero.png`}
+        src={`${import.meta.env.BASE_URL}images/hero-salon.png`}
         alt="Salón Glamour"
         className="absolute inset-0 w-full h-full object-cover opacity-40 -z-10"
       />

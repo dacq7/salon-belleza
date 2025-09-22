@@ -50,6 +50,19 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+
+        /* 🎨 Paleta personalizada para tu salón */
+        brand: {
+          primary: "#E11D48",   // Rosa elegante
+          secondary: "#F5C542", // Dorado
+          dark: "#111827",      // Fondo oscuro
+          light: "#FFF7FB",     // Fondo claro
+          muted: "#9CA3AF",     // Gris suave
+        },
+      },
+      fontFamily: {
+        sans: ["Poppins", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Playfair Display", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,3 +87,4 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 };
+
